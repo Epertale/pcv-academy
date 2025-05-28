@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* styles/globals.css */
+body {
+  @apply bg-white text-black m-0 p-0;
+}
+.clip-slant {
+  clip-path: polygon(30% 0%, 100% 0%, 100% 100%, 0% 100%);
+}
