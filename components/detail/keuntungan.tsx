@@ -28,7 +28,6 @@ const steps = [
   },
 ];
 
-
 export default function DetailKeuntungan() {
   return (
     <section className="bg-white py-16 px-4 md:px-10">
@@ -40,18 +39,18 @@ export default function DetailKeuntungan() {
               index % 2 === 1 ? "md:flex-row-reverse" : ""
             }`}
             initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
             viewport={{ once: true, amount: 0.3 }}
+            whileInView={{ opacity: 1, y: 0 }}
           >
             {/* Gambar kiri */}
             <div className="w-full md:w-1/2">
               <Image
-                src={step.src}
                 alt={step.title}
-                width={800}
-                height={600}
                 className="rounded-xl shadow-lg w-full h-auto"
+                height={600}
+                src={step.src}
+                width={800}
               />
             </div>
 
@@ -67,7 +66,6 @@ export default function DetailKeuntungan() {
             </div>
           </motion.div>
         ))}
-  
       </div>
     </section>
   );

@@ -70,24 +70,24 @@ export default function SubscriptionPlans() {
             key={index}
             className="bg-gradient-to-r from-neutral-900 to-neutral-800 text-white rounded-2xl p-6 shadow-lg flex flex-col justify-between"
             initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: index * 0.2 }}
             viewport={{ once: true }}
+            whileInView={{ opacity: 1, y: 0 }}
           >
             {plan.badge && (
               <div className="flex items-center gap-2 text-green-400 mb-2">
                 <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={1.5}
-                  stroke="currentColor"
                   className="w-6 h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth={1.5}
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
                 >
                   <path
+                    d="M16.5 10.5L12 14.25l-2.25-2.25M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    d="M16.5 10.5L12 14.25l-2.25-2.25M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
                   />
                 </svg>
                 <span>{plan.badge}</span>
@@ -108,9 +108,9 @@ export default function SubscriptionPlans() {
 
             <Button
               as={Link}
+              className="mt-auto bg-white text-black font-semibold py-2 px-4 rounded-lg hover:bg-gray-200 transition"
               color="primary"
               href="/auth/register"
-              className="mt-auto bg-white text-black font-semibold py-2 px-4 rounded-lg hover:bg-gray-200 transition"
             >
               Get Started
             </Button>

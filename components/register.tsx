@@ -5,11 +5,11 @@ import { Button } from "@heroui/button";
 import { Checkbox } from "@heroui/checkbox";
 import { FcGoogle } from "react-icons/fc";
 import { useState } from "react";
+
 import { LogoBig } from "./icons";
 
 export default function RegisterPage() {
   const [passwordVisible, setPasswordVisible] = useState(false);
-  const [notUsResident, setNotUsResident] = useState(true);
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
@@ -40,32 +40,30 @@ export default function RegisterPage() {
               {/* Tambahkan opsi lain sesuai kebutuhan */}
             </select>
 
-            <Input type="email" placeholder="Email" />
+            <Input placeholder="Email" type="email" />
 
             <div className="relative">
               <Input
-                type={passwordVisible ? "text" : "password"}
                 placeholder="Kata Sandi"
+                type={passwordVisible ? "text" : "password"}
               />
               <button
+                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-600 text-sm"
                 type="button"
                 onClick={() => setPasswordVisible(!passwordVisible)}
-                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-600 text-sm"
               >
                 {passwordVisible ? "Sembunyikan" : "Tampilkan"}
               </button>
             </div>
 
-            <Input type="text" placeholder="Kode mitra (opsional)" />
+            <Input placeholder="Kode mitra (opsional)" type="text" />
 
             <div className="flex items-start space-x-2">
-              <Checkbox
-                checked={notUsResident}
-                onChange={(e) => setNotUsResident(e.target.checked)}
-              />
-              <label className="text-sm text-gray-700">
-                Saya menyatakan dan mengonfirmasi bahwa saya bukan warga negara atau penduduk AS untuk tujuan pajak.
-              </label>
+              <Checkbox />
+              <span className="text-sm text-gray-700">
+                Saya menyatakan dan mengonfirmasi bahwa saya bukan warga negara
+                atau penduduk AS untuk tujuan pajak.
+              </span>
             </div>
 
             <Button className="w-full bg-black text-white hover:bg-gray-800">
@@ -92,7 +90,7 @@ export default function RegisterPage() {
               <span className="underline cursor-pointer">Kebijakan PCV</span>.
               <br />
               <span className="text-black">Sudah Punya Akun?</span>{" "}
-              <a href="/auth/login" className="text-purple-700 font-semibold">
+              <a className="text-purple-700 font-semibold" href="/auth/login">
                 Masuk
               </a>
             </p>

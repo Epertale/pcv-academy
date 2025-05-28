@@ -35,14 +35,16 @@ export default function FAQSection() {
     <section className="max-w-6xl mx-auto px-4 py-20 grid md:grid-cols-2 gap-10 items-center">
       {/* Right: FAQ Heading and Button */}
       <motion.div
+        className="text-center items-center"
         initial={{ opacity: 0, x: -50 }}
-        whileInView={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
-        className="text-center items-center"
+        whileInView={{ opacity: 1, x: 0 }}
       >
         <h2 className="text-[30px] md:text-[60px] font-bold mb-2">FAQ</h2>
-        <p className="text-[20px] md:text-[30px] text-gray-600 mb-6">Frequently Asked Questions</p>
+        <p className="text-[20px] md:text-[30px] text-gray-600 mb-6">
+          Frequently Asked Questions
+        </p>
       </motion.div>
       {/* Left: FAQ */}
       <div className="space-y-4">
@@ -50,11 +52,11 @@ export default function FAQSection() {
           <motion.div
             key={index}
             className="bg-gradient-to-r from-neutral-900 to-neutral-800 text-white p-4 rounded-xl shadow-lg cursor-pointer"
-            onClick={() => toggle(index)}
             initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.15, duration: 0.5 }}
             viewport={{ once: true }}
+            whileInView={{ opacity: 1, y: 0 }}
+            onClick={() => toggle(index)}
           >
             <div className="flex justify-between items-center text-left">
               <h4 className="font-medium text-sm md:text-base">
@@ -66,9 +68,9 @@ export default function FAQSection() {
             </div>
             {openIndex === index && (
               <motion.p
+                animate={{ opacity: 1 }}
                 className="mt-2 text-sm text-gray-300"
                 initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
                 transition={{ duration: 0.3 }}
               >
                 {faq.answer}

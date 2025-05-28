@@ -4,11 +4,8 @@ import DefaultLayout from "@/layouts/default";
 import BusinessProcessFlow from "@/components/prosesBisnis";
 import TimelineSection from "@/components/timeline";
 import ClientTestimonials from "@/components/testimonial";
-
 import KeuntunganSection from "@/components/keuntungan";
-import TentangKamiSection from "@/components/tentangKami";
 import LayananSection from "@/components/layanan";
-import InteractiveGrid from "@/components/animata/background/interactive-grid";
 import FAQSection from "@/components/fac";
 
 export default function IndexPage() {
@@ -19,9 +16,9 @@ export default function IndexPage() {
         <motion.div
           className="max-w-xl text-center md:text-left"
           initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.6 }}
+          viewport={{ once: true, amount: 0.3 }}
+          whileInView={{ opacity: 1, y: 0 }}
         >
           <h1 className="text-[30px] md:text-[60px] font-bold text-black">
             Selamat Datang di
@@ -39,14 +36,14 @@ export default function IndexPage() {
         <motion.div
           className="hidden md:block"
           initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.6, delay: 0.2 }}
+          viewport={{ once: true, amount: 0.3 }}
+          whileInView={{ opacity: 1, y: 0 }}
         >
           <img
-            src="https://static.vecteezy.com/system/resources/previews/056/780/787/non_2x/hands-typing-on-a-laptop-surrounded-by-multiple-screens-displaying-financial-charts-in-a-flat-illustration-vector.jpg"
             alt="Welcome PCV Academy"
             className="w-full max-w-md"
+            src="https://static.vecteezy.com/system/resources/previews/056/780/787/non_2x/hands-typing-on-a-laptop-surrounded-by-multiple-screens-displaying-financial-charts-in-a-flat-illustration-vector.jpg"
           />
         </motion.div>
       </section>
@@ -56,7 +53,7 @@ export default function IndexPage() {
       <LayananSection />
       <ClientTestimonials />
       <FAQSection />
-      <div className="py-24 bg-gradient-to-t from-neutral-800 to-white"></div>
+      <div className="py-24 bg-gradient-to-t from-neutral-800 to-white" />
     </DefaultLayout>
   );
 }

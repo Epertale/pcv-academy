@@ -9,7 +9,7 @@ export default function IndexPage() {
       <ProfilPerusahaanSection />
       <TentangKamiSection />
       <VisiMisiSection />
-      <div className="py-24 bg-gradient-to-t from-neutral-800 to-white"></div>
+      <div className="py-24 bg-gradient-to-t from-neutral-800 to-white" />
     </DefaultLayout>
   );
 }

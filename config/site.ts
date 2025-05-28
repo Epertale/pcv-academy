@@ -2,7 +2,8 @@ export type SiteConfig = typeof siteConfig;
 
 export const siteConfig = {
   name: "Prosperity Catalyst Vision",
-  description: "Platform edukasi dan layanan trading berbasis AI yang dirancang untuk membantu trader pemula hingga profesional meraih profit konsisten dan kebebasan finansial.",
+  description:
+    "Platform edukasi dan layanan trading berbasis AI yang dirancang untuk membantu trader pemula hingga profesional meraih profit konsisten dan kebebasan finansial.",
   navItems: [
     {
       label: "Home",

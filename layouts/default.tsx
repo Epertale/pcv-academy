@@ -12,15 +12,12 @@ export default function DefaultLayout({
     <div className="bg-white text-black">
       <Head />
       <Navbar />
-      <main className="">
-        {children}
-      </main>
+      <main className="">{children}</main>
       <Footer />
     </div>
   );
 }
 
-// relative flex flex-col min-h-screen 
+// relative flex flex-col min-h-screen
 
 // mx-auto max-w-7xl px-6 flex-grow pt-16
-

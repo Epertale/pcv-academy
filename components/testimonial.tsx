@@ -143,6 +143,7 @@ export default function ClientTestimonials() {
 
   useEffect(() => {
     setIsMounted(true);
+
     return () => setIsMounted(false);
   }, []);
 
@@ -153,7 +154,7 @@ export default function ClientTestimonials() {
       ([entry]) => {
         setIsVisible(entry.isIntersecting);
       },
-      { threshold: 0.1 }
+      { threshold: 0.1 },
     );
 
     observer.observe(containerRef.current);
@@ -194,10 +195,10 @@ export default function ClientTestimonials() {
     >
       {isMounted && (
         <motion.div
-          className="flex flex-row"
-          style={{ width: `${totalLength}px` }}
           animate={controls}
+          className="flex flex-row"
           initial={{ x: 0 }}
+          style={{ width: `${totalLength}px` }}
         >
           {[...testimonials, ...testimonials].map((t, i) => (
             <div
@@ -206,26 +207,26 @@ export default function ClientTestimonials() {
             >
               <div className="flex items-center gap-3">
                 <img
-                  src={t.image}
                   alt={t.name}
                   className="w-10 h-10 rounded-full object-cover"
+                  src={t.image}
                 />
                 <div>
                   <h4 className="font-semibold text-white text-sm">{t.name}</h4>
                   <p className="text-xs text-white">{t.title}</p>
                 </div>
               </div>
-              <p className="text-sm text-white">"{t.text}"</p>
+              <p className="text-sm text-white">&ldquo;{t.text}&rdquo;</p>
               <div className="flex text-yellow-400">
                 {Array(t.rating)
                   .fill(null)
                   .map((_, idx) => (
                     <svg
                       key={idx}
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
                       className="w-4 h-4"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg"
                     >
                       <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.967a1 1 0 00.95.69h4.18c.969 0 1.371 1.24.588 1.81l-3.39 2.463a1 1 0 00-.364 1.118l1.286 3.967c.3.921-.755 1.688-1.538 1.118l-3.39-2.463a1 1 0 00-1.176 0l-3.39 2.463c-.783.57-1.838-.197-1.538-1.118l1.286-3.967a1 1 0 00-.364-1.118L2.025 9.394c-.783-.57-.38-1.81.588-1.81h4.18a1 1 0 00.95-.69l1.286-3.967z" />
                     </svg>

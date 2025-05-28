@@ -40,10 +40,10 @@ export default function KeuntunganSection() {
             key={index}
             className="flex bg-gradient-to-r from-neutral-900 to-neutral-800 text-white rounded-xl p-6 shadow-lg justify-between items-center"
             initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: index * 0.1 }}
             viewport={{ once: true, amount: 0.2 }}
             whileHover={{ scale: 1.02 }}
+            whileInView={{ opacity: 1, y: 0 }}
           >
             <div className="w-2/3 pr-4">
               <h3 className="text-lg font-semibold mb-2">{item.title}</h3>
@@ -51,11 +51,11 @@ export default function KeuntunganSection() {
             </div>
             <motion.div whileHover={{ scale: 1.05 }}>
               <Image
-                src={item.src}
                 alt={`item-${index}`}
-                width={1600}
-                height={900}
                 className="w-28 h-56 lg:w-56 lg:h-28 object-cover rounded-md"
+                height={900}
+                src={item.src}
+                width={1600}
               />
             </motion.div>
           </motion.div>
@@ -63,20 +63,18 @@ export default function KeuntunganSection() {
       </div>
       {/* Tombol CTA */}
       <motion.div
-          className="flex justify-center pt-6"
-          initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          viewport={{ once: true }}
-        >
-          <Link href="/keuntungan">
-            <Button
-              className="shadow-lg text-white bg-gradient-to-r from-neutral-900 to-neutral-800 font-bold py-3 px-6 rounded-lg"
-            >
-              Learn more
-            </Button>
-          </Link>
-        </motion.div>
+        className="flex justify-center pt-6"
+        initial={{ opacity: 0, scale: 0.9 }}
+        transition={{ duration: 0.5, delay: 0.2 }}
+        viewport={{ once: true }}
+        whileInView={{ opacity: 1, scale: 1 }}
+      >
+        <Link href="/keuntungan">
+          <Button className="shadow-lg text-white bg-gradient-to-r from-neutral-900 to-neutral-800 font-bold py-3 px-6 rounded-lg">
+            Learn more
+          </Button>
+        </Link>
+      </motion.div>
     </section>
   );
 }

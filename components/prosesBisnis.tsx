@@ -44,11 +44,11 @@ export default function BusinessProcessFlow() {
     <section ref={ref} className="relative overflow-hidden">
       {/* Background parallax */}
       <motion.div
+        className="absolute inset-0 bg-cover bg-center z-0"
         style={{
           backgroundImage: "url('/images/education-bg.jpg')",
           y,
         }}
-        className="absolute inset-0 bg-cover bg-center z-0"
       />
       {/* Overlay */}
       <div className="absolute z-10" />
@@ -64,9 +64,9 @@ export default function BusinessProcessFlow() {
               key={idx}
               className="text-center"
               initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: idx * 0.2 }}
               viewport={{ once: true }}
+              whileInView={{ opacity: 1, y: 0 }}
             >
               <div className="rounded-xl text-xl px-4 py-1 w-fit mx-auto text-sm font-semibold shadow-lg shadow-black/50 bg-white">
                 {step.title}

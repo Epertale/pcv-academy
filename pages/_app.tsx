@@ -6,7 +6,6 @@ import { useRouter } from "next/router";
 
 import { fontSans, fontMono } from "@/config/fonts";
 import "@/styles/globals.css";
-import InteractiveGrid from "@/components/animata/background/interactive-grid";
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
@@ -15,7 +14,7 @@ export default function App({ Component, pageProps }: AppProps) {
     <HeroUIProvider navigate={router.push}>
       <NextThemesProvider>
         <div className="min-h-screen w-full bg-white">
-            <Component {...pageProps} />
+          <Component {...pageProps} />
         </div>
       </NextThemesProvider>
     </HeroUIProvider>

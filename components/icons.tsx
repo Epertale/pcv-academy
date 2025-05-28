@@ -1,17 +1,27 @@
 import * as React from "react";
+
 import { IconSvgProps } from "@/types";
 import LogoBlk from "@/src/assets/logo.svg"; // No ?react needed in Next.js
-import LogoWht from "@/src/assets/logo-white.svg"
+import LogoWht from "@/src/assets/logo-white.svg";
 
-export const Logo: React.FC<IconSvgProps> = ({ size = 36, height, ...props }) => (
-  <LogoWht width={size || height} height={size || height} {...props} />
+export const Logo: React.FC<IconSvgProps> = ({
+  size = 36,
+  height,
+  ...props
+}) => <LogoWht height={size || height} width={size || height} {...props} />;
+
+export const LogoBig: React.FC<IconSvgProps> = ({
+  size = 64,
+  height,
+  ...props
+}) => (
+  <LogoBlk
+    className="text-white-500"
+    height={size || height}
+    width={size || height}
+    {...props}
+  />
 );
-
-export const LogoBig: React.FC<IconSvgProps> = ({ size = 64, height, ...props }) => (
-  <LogoBlk className="text-white-500" width={size || height} height={size || height} {...props} />
-);
-
-
 
 export const DiscordIcon: React.FC<IconSvgProps> = ({
   size = 24,
