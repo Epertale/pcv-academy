@@ -1,10 +1,10 @@
-// next.config.js
-
 /** @type {import('next').NextConfig} */
-
 const isProd = process.env.NODE_ENV === "production";
 
 const nextConfig = {
+  trailingSlash: true,
+  // basePath: isProd ? "/pcv-academy" : "",
+  // assetPrefix: isProd ? "/pcv-academy/" : "",
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/i,
@@ -16,7 +16,6 @@ const nextConfig = {
             svgo: true,
             svgoConfig: {
               plugins: [
-                // ✅ CORRECT format: object with "name" key
                 { name: "preset-default" },
                 { name: "removeViewBox", active: false },
               ],
@@ -25,12 +24,8 @@ const nextConfig = {
         },
       ],
     });
-
     return config;
   },
-  output: "export", // <--- penting!
-  basePath: isProd ? "/nama-repo-kamu" : "",
-  assetPrefix: isProd ? "/nama-repo-kamu/" : "",
 };
 
 module.exports = nextConfig;

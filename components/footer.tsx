@@ -1,4 +1,5 @@
 import { Logo } from "@/components/icons";
+import Link from "next/link";
 
 export const Footer = () => {
   return (
@@ -31,7 +32,7 @@ export const Footer = () => {
         <div>
           <h2 className="font-semibold text-sm mb-2">Contact</h2>
           <ul className="text-sm text-gray-300 space-y-1">
-            <li>Customer Service: +62 123 4567 8900</li>
+            <li>Customer Service: +6281-2300-82514</li>
             <li>
               Email:{" "}
               <a className="underline" href="mailto:support@pcvacademy.com">
@@ -49,11 +50,10 @@ export const Footer = () => {
         <div>
           <h2 className="font-semibold text-sm mb-2">Media Social</h2>
           <ul className="text-sm text-gray-300 space-y-1">
-            <li>Facebook</li>
-            <li>Youtube</li>
-            <li>Twitter</li>
-            <li>Telegram</li>
-            <li>WhatsApp</li>
+            <li><Link href="https://www.instagram.com/dancingwithgold_" className="text-white">Instagram</Link></li>
+            <li><Link href="https://www.tiktok.com/@dwgacademy_" className="text-white">TikTok</Link></li>
+            <li><Link href="https://t.me/dancingwithgold" className="text-white">Telegram</Link></li>
+            <li><Link href="https://wa.me/6281230082514" className="text-white">WhatsApp</Link></li>
           </ul>
         </div>
       </div>

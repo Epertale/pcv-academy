@@ -1,6 +1,9 @@
 // components/LoginPage.tsx
 "use client";
 
+import { useState } from "react";
+import { useRouter } from "next/router";
+
 import { Input } from "@heroui/input";
 import { Button } from "@heroui/button";
 import { Checkbox } from "@heroui/checkbox";
@@ -9,10 +12,39 @@ import { FcGoogle } from "react-icons/fc";
 import { LogoBig } from "./icons";
 
 export default function LoginPage() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [errorMsg, setErrorMsg] = useState("");
+  const router = useRouter();
+
+  const handleLogin = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    const response = await fetch("/api/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email, password }),
+    });
+
+    if (response.ok) {
+      router.push("/dashboard"); // Redirect ke dashboard jika login sukses
+    } else {
+      const data = await response.json();
+      setErrorMsg(data.message || "Login gagal");
+    }
+  };
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="flex w-full max-w-5xl bg-white rounded shadow-md overflow-hidden">
-        {/* Kiri - Logo dan Brand */}
+      <div className="flex w-full max-w-5xl bg-white rounded shadow-md overflow-hidden flex-col md:flex-row">
+        {/* Mobile Logo */}
+        <div className="md:hidden flex justify-center items-center w-full py-8 bg-white">
+          <LogoBig size={150} />
+        </div>
+
+        {/* Kiri - Logo (untuk desktop) */}
         <div className="hidden md:flex flex-col justify-center items-center w-1/2 bg-white p-10 relative">
           <div className="flex justify-center md:justify-start mb-6">
             <LogoBig className="" size={200} />
@@ -20,19 +52,25 @@ export default function LoginPage() {
           <h2 className="text-3xl md:text-4xl font-bold uppercase text-center">
             Prosperity Catalyst Vision
           </h2>
-          {/* Background dots */}
-          <div className="absolute top-6 left-6 w-4 h-4 bg-gray-300 rounded-full" />
-          <div className="absolute bottom-8 left-12 w-4 h-4 bg-gray-300 rounded-full" />
-          <div className="absolute top-1/2 right-2 w-3 h-3 bg-gray-300 rounded-full" />
         </div>
 
         {/* Kanan - Form Login */}
         <div className="w-full md:w-1/2 bg-gray-200 px-8 py-10">
           <h2 className="text-lg font-bold mb-6">MASUK</h2>
 
-          <form className="space-y-4">
-            <Input placeholder="Email/No Telepon" type="text" />
-            <Input placeholder="Password" type="password" />
+          <form className="space-y-4" onSubmit={handleLogin}>
+            <Input
+              type="email"
+              placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <Input
+              type="password"
+              placeholder="Kata Sandi"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
 
             <div className="flex items-center space-x-2">
               <Checkbox id="rememberMe" />
@@ -40,8 +78,11 @@ export default function LoginPage() {
                 Ingat saya
               </label>
             </div>
-
-            <Button className="w-full bg-black text-white hover:bg-gray-800">
+            {errorMsg && <p className="text-red-500 mb-2">{errorMsg}</p>}
+            <Button
+              type="submit"
+              className="w-full bg-black text-white hover:bg-gray-800"
+            >
               LANJUT
             </Button>
 

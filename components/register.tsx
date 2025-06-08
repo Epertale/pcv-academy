@@ -5,33 +5,61 @@ import { Button } from "@heroui/button";
 import { Checkbox } from "@heroui/checkbox";
 import { FcGoogle } from "react-icons/fc";
 import { useState } from "react";
+import { useRouter } from "next/router";
 
 import { LogoBig } from "./icons";
 
 export default function RegisterPage() {
+  const router = useRouter();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleRegister = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    const newUser = {
+      email,
+      password,
+    };
+
+    const response = await fetch("/api/users", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(newUser),
+    });
+
+    if (response.ok) {
+      alert("Registrasi berhasil!");
+      router.push("/auth/login");
+    } else {
+      alert("Registrasi gagal.");
+    }
+  };
   const [passwordVisible, setPasswordVisible] = useState(false);
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="flex w-full max-w-5xl bg-white rounded shadow-md overflow-hidden">
-        {/* Kiri - Logo dan Brand */}
+      <div className="flex w-full max-w-5xl bg-white rounded shadow-md overflow-hidden flex-col md:flex-row">
+        {/* Mobile Logo */}
+        <div className="md:hidden flex justify-center items-center w-full py-8 bg-white">
+          <LogoBig size={150} />
+        </div>
+
+        {/* Kiri - Logo (untuk desktop) */}
         <div className="hidden md:flex flex-col justify-center items-center w-1/2 bg-white p-10 relative">
           <div className="flex justify-center md:justify-start mb-6">
-            <LogoBig size={200} />
+            <LogoBig className="" size={200} />
           </div>
           <h2 className="text-3xl md:text-4xl font-bold uppercase text-center">
             Prosperity Catalyst Vision
           </h2>
-          <div className="absolute top-6 left-6 w-4 h-4 bg-gray-300 rounded-full" />
-          <div className="absolute bottom-8 left-12 w-4 h-4 bg-gray-300 rounded-full" />
-          <div className="absolute top-1/2 right-2 w-3 h-3 bg-gray-300 rounded-full" />
         </div>
 
         {/* Kanan - Form Registrasi */}
         <div className="w-full md:w-1/2 bg-gray-200 px-8 py-10">
           <h2 className="text-lg font-bold mb-6">PENDAFTARAN</h2>
 
-          <form className="space-y-4">
+          <form className="space-y-4" onSubmit={handleRegister}>
             <select className="w-full border border-gray-300 rounded px-3 py-2 text-sm text-white">
               <option value="">Negara tempat tinggal</option>
               <option value="ID">Indonesia</option>
@@ -40,20 +68,20 @@ export default function RegisterPage() {
               {/* Tambahkan opsi lain sesuai kebutuhan */}
             </select>
 
-            <Input placeholder="Email" type="email" />
+            <Input
+              type="email"
+              placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
 
             <div className="relative">
               <Input
+                type="password"
                 placeholder="Kata Sandi"
-                type={passwordVisible ? "text" : "password"}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
               />
-              <button
-                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-600 text-sm"
-                type="button"
-                onClick={() => setPasswordVisible(!passwordVisible)}
-              >
-                {passwordVisible ? "Sembunyikan" : "Tampilkan"}
-              </button>
             </div>
 
             <Input placeholder="Kode mitra (opsional)" type="text" />
@@ -66,7 +94,10 @@ export default function RegisterPage() {
               </span>
             </div>
 
-            <Button className="w-full bg-black text-white hover:bg-gray-800">
+            <Button
+              type="submit"
+              className="w-full bg-black text-white hover:bg-gray-800"
+            >
               LANJUT
             </Button>
 

@@ -67,8 +67,8 @@ export default function TimelineSection() {
           whileInView={{ opacity: 1, scale: 1 }}
         >
           <Link href="/auth/login">
-            <Button className="bg-gradient-to-r from-neutral-900 to-neutral-800 font-bold px-6 py-3 rounded-lg shadow-lg text-white">
-              COBA TRIAL 7 HARI
+            <Button size="lg" className="bg-gradient-to-r from-neutral-900 to-neutral-800 font-bold px-6 py-3 rounded-lg shadow-lg text-white">
+              TRIAL 7 HARI
             </Button>
           </Link>
         </motion.div>

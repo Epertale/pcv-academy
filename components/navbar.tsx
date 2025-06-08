@@ -16,9 +16,9 @@ export const Navbar = () => {
       className="bg-gradient-to-r from-black to-#737373 text-white"
       maxWidth="xl"
     >
-      <NavbarBrand className="gap-2">
+      <NavbarBrand className="gap-2" as={Link} href="/">
         <Logo />
-        <p className="font-bold text-inherit">PCV</p>
+        <p className="font-bold text-inherit text-white">PCV</p>
       </NavbarBrand>
       <NavbarContent className="hidden sm:flex gap-10" justify="center">
         <NavbarItem>
